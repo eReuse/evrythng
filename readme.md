@@ -1,40 +1,4 @@
-A walkthrough over the Evrything API
 
-Regarding the EVRYTHNG environment, what follows describes a walkthrough over the API mainly using the command line interface (CLI) and ‘curl’ commands, exploring the relationship with the eReuse platform.
-Using the web interface we created different keys (removed some characters for security reasons) that were used below:
-$ apiKey=W4ET08RCmgdjR5V28UutOuehVyxtr...
-$ name=ereuse
-$ region=eu
-$ evrythng operators add $name $region $apiKey
-
-Welcome to the EVRYTHNG CLI!
-
-To get started, please provide the following to set up your first account Operator:
-
-Short Operator name (e.g: 'personal'): test
-Account region ('us' or 'eu'): eu
-Operator API Key (from 'Account Settings' in the EVRYTHNG Dashboard'): W4ET08RCmgdjR5V28UutOuehVyxtrLIzBLgGQ6dCzoI...
-
-$ OPERATOR_API_KEY=W4ET08RCmgdjR5V28UutOuehVyxtrLIzBLgGQ6dCzoI...
-
-And register an application and obtain an application API key:
-
-$ APPLICATION_API_KEY=1Wek8nKyPOQtbcH0YhCRGHQdtlOsso8Hr...
-
-And create a (my) user account:
-
-$ curl -H "Content-Type: application/json"   -H "Authorization: $APPLICATION_API_KEY"   -X POST 'https://api.evrythng.com/auth/evrythng/users'   -d '{  "firstName": "Leandro", "lastName": "Navarro", "email": "leandro@ereuse.org", "password": "upcD6105" }'
-
-{"evrythngUser":"UKp9ffAnmwxD9xRRamKny...","activationCode":"LtYD8hHk","status":"inactive","email":"leandro@ereuse.org"}
-
-And validate that user:
-
-$ curl -H "Content-Type: application/json" -H "Authorization: $APPLICATION_API_KEY" -X POST 'https://api.evrythng.com/auth/evrythng/users/UKp9ffAnmwxD9xRRamKnybdt/validate' -d '{ "activationCode": "LtYD8hHk" }'
-{"status":"active","evrythngUser":"UKp9ffAnmwxD9xRRamKny...","evrythngApiKey":"6c2Ok0lwFtxvrfIPMqkbzghi5NpNAF5PsZMLwKi..."}
-
-We obtain an API key that we save in the local environment:
-
-$ evrythngApiKey=6c2Ok0lwFtxvrfIPMqkbzghi5NpNAF5PsZMLwKiIIKFff0z5...
 
 For instance we can create a product (a model or class of objects):
 
